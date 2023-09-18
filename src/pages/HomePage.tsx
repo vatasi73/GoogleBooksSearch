@@ -5,11 +5,7 @@ import DropDownSelect from "../features/sort/DropDownSelect";
 
 import { Box, Typography } from "@mui/material";
 
-import { useLoadMore } from "../features/loadMore/use-loadMore";
-
 const HomePage = () => {
-  const [handleLoadMoreClick] = useLoadMore();
-
   return (
     <>
       <Typography
@@ -23,12 +19,6 @@ const HomePage = () => {
       >
         Search for Books
       </Typography>
-      <button onClick={handleLoadMoreClick}>Load</button>
-      {/* <SubmitButton Click={handleLoadMoreClick} text="  Load more books" /> */}
-      {/* <button style={{ height: "60px" }} onClick={pagination}>
-        {" "}
-        Button
-      </button> */}
       <Search />
       <Box
         sx={{
@@ -50,7 +40,6 @@ const HomePage = () => {
         }}
       >
         <BooksList />
-        <button onClick={handleLoadMoreClick}>Load</button>
       </Box>
     </>
   );

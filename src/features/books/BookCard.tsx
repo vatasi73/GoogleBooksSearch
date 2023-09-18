@@ -41,6 +41,7 @@ const BookCard: React.FC<Props> = ({
         <Card>
           <Link to={`/details/${id}`} style={linkStyles}>
             <CardMedia
+              component="img"
               image={smallThumbnail || ""}
               title={title}
               sx={{

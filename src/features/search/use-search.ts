@@ -6,6 +6,7 @@ import { setSearch } from "./search-slice";
 import { useBooks } from "../books/use-books";
 import { useSelector } from "react-redux";
 import { selectSearch } from "./searchSelector";
+import { setClearLoadMore } from "../loadMore/loadMore-slice";
 
 type OnSearch = ChangeEventHandler<HTMLInputElement>;
 
@@ -20,6 +21,7 @@ export const useSearch = (): [
   const search = useSelector(selectSearch);
   const handleClickSearch = () => {
     startFetch();
+    dispatch(setClearLoadMore());
   };
 
   const handleSearch: OnSearch = (e) => {

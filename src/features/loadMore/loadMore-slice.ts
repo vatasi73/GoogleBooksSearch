@@ -2,12 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type loadMore = {
   loadMore: number;
-  count: number;
 };
 
 const initialState: loadMore = {
   loadMore: 0,
-  count: 0,
 };
 
 const loadMoreSlice = createSlice({
@@ -17,13 +15,10 @@ const loadMoreSlice = createSlice({
     setLoadNewPage: (state, action: PayloadAction<number>) => {
       state.loadMore = action.payload;
     },
-    setCountPage: (state, action: PayloadAction<number>) => {
-      state.count = action.payload;
-    },
-    setClearSearch: () => initialState,
+
+    setClearLoadMore: () => initialState,
   },
 });
 
-export const { setLoadNewPage, setClearSearch, setCountPage } =
-  loadMoreSlice.actions;
+export const { setLoadNewPage, setClearLoadMore } = loadMoreSlice.actions;
 export const loadMoreReducer = loadMoreSlice.reducer;

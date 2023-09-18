@@ -28,10 +28,7 @@ export const useBooks = (): [Items[], () => void] => {
       dispatch(loadBooks({ search, sort, category, loadMore }));
     }
   };
-  const handleLoadMoreClick = () => {
-    dispatch(setLoadNewPage(loadMore + 30));
-    console.log("LOADM");
-  };
+
   useEffect(() => {
     if (!books?.items) {
       return;
@@ -40,8 +37,13 @@ export const useBooks = (): [Items[], () => void] => {
       setUpdateBooks(() => books?.items);
       return;
     }
-    setUpdateBooks([...updateBooks, ...books?.items]);
+    setUpdateBooks((prevupdatebooks) => {
+      const updatedArray = prevupdatebooks.filter(
+        (item) => !books.items.includes(item)
+      );
+      return [...updatedArray, ...books?.items];
+    });
   }, [books, search, sort, category, loadMore]);
-
-  return [updateBooks, startFetch, handleLoadMoreClick];
+  console.log(books, "Books");
+  return [updateBooks, startFetch];
 };

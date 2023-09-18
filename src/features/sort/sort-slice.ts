@@ -20,9 +20,8 @@ const categorySlice = createSlice({
     setSort: (state, action: PayloadAction<string>) => {
       state.sort = action.payload;
     },
-    clearControls: () => initialState,
   },
 });
 
-export const { setCategory, setSort, clearControls } = categorySlice.actions;
+export const { setCategory, setSort } = categorySlice.actions;
 export const categoryReducer = categorySlice.reducer;
