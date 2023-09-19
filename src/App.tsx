@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import Loading from "./componets/Loading/Loading";
 
 const DetailsPage = React.lazy(() => import("./pages/DetailsPage"));
 const HomePage = React.lazy(() => import("./pages/HomePage"));
@@ -20,7 +21,7 @@ function App() {
           <Route
             path="/"
             element={
-              <Suspense fallback={"Гружу"}>
+              <Suspense fallback={<Loading />}>
                 <HomePage />
               </Suspense>
             }
@@ -29,7 +30,7 @@ function App() {
           <Route
             path="/details/:id"
             element={
-              <Suspense fallback={"Гружу"}>
+              <Suspense fallback={<Loading />}>
                 <DetailsPage />
               </Suspense>
             }

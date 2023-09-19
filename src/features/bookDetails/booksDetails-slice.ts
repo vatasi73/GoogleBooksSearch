@@ -5,7 +5,7 @@ export const loadBookDetails = createAsyncThunk<
   VolumeInfo[],
   string,
   {
-    state: { books: BooksDetailsSlice };
+    state: { books: BookDetailsSlice };
     extra: Extra;
     rejectValue: string;
   }
@@ -30,16 +30,16 @@ export const loadBookDetails = createAsyncThunk<
   }
 );
 
-type BooksDetailsSlice = {
+type BookDetailsSlice = {
   status: Status;
   error: string | null;
-  list: null | VolumeInfo[];
+  list: VolumeInfo[];
 };
 
-const initialState: BooksDetailsSlice = {
+const initialState: BookDetailsSlice = {
   status: "idle",
   error: null,
-  list: null || [],
+  list: [],
 };
 
 const bookDetailsSlice = createSlice({

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../store";
-import { Items } from "../../types";
+import { BooksResponse } from "../../types";
 import { selectAllBooks } from "./books-selectors";
 
 import { loadBooks } from "./books-slice";
@@ -9,10 +9,11 @@ import { loadBooks } from "./books-slice";
 import { selectSearch } from "../search/searchSelector";
 import { selectCategory, selectSort } from "../sort/sort-selector";
 import { selectLoadNewPage } from "../loadMore/loadMoreSelector";
-import { setLoadNewPage } from "../loadMore/loadMore-slice";
 
-export const useBooks = (): [Items[], () => void] => {
-  const [updateBooks, setUpdateBooks] = useState();
+export const useBooks = (): [BooksResponse[] | undefined, () => void] => {
+  const [updateBooks, setUpdateBooks] = useState<BooksResponse[] | undefined>(
+    undefined
+  );
 
   const dispatch = useAppDispatch();
   const search = useSelector(selectSearch);
@@ -30,7 +31,7 @@ export const useBooks = (): [Items[], () => void] => {
   };
 
   useEffect(() => {
-    if (!books?.items) {
+    if (!books || !books.items) {
       return;
     }
     if (!loadMore) {
@@ -38,12 +39,16 @@ export const useBooks = (): [Items[], () => void] => {
       return;
     }
     setUpdateBooks((prevupdatebooks) => {
+      if (prevupdatebooks === undefined) {
+        return [];
+      }
+
       const updatedArray = prevupdatebooks.filter(
-        (item) => !books.items.includes(item)
+        (item) => !books?.items.includes(item)
       );
-      return [...updatedArray, ...books?.items];
+      return [...updatedArray, ...books.items];
     });
   }, [books, search, sort, category, loadMore]);
-  console.log(books, "Books");
+
   return [updateBooks, startFetch];
 };

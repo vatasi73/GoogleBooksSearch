@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
-import { loadBookDetails } from "./booksDetails-slice";
+
 import { selectBookDetails } from "./bookDetails-selectors";
 
 import { VolumeInfo } from "../../types";
+import { loadBookDetails } from "./booksDetails-slice";
 
 export const useBookDetails = (): VolumeInfo[] => {
   const dispatch = useAppDispatch();

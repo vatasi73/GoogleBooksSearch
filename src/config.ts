@@ -9,7 +9,7 @@ export const ALL_BOOKS = (
 ): string =>
   BASE_URL +
   `?q=intitle:${search}${
-    category && category !== "" ? `+subject:${category}` : ""
+    category && category !== "all" ? `+subject:${category}` : ""
   }&orderBy=${sort}&key=${KEY}+&startIndex=${loadMore}&maxResults=30`;
 
 export const DETAILS_BOOK = (id: string) =>

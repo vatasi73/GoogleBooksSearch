@@ -1,6 +1,7 @@
 import { styled, Button } from "@mui/material";
 
 export const SelectButton = styled(Button)({
+  textTransform: "none",
   background: "gray",
   color: "white",
   backgroundColor: "none",

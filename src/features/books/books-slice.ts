@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Status, Extra, Items } from "../../types";
 
 export const loadBooks = createAsyncThunk<
-  Items[],
+  Items,
   {
     search: string;
     sort: string;
@@ -43,13 +43,13 @@ export const loadBooks = createAsyncThunk<
 type BooksSlice = {
   status: Status;
   error: string | null;
-  list: Items[];
+  list: Items | undefined;
 };
 
 const initialState: BooksSlice = {
   status: "idle",
   error: null,
-  list: [],
+  list: undefined,
 };
 
 const booksSlice = createSlice({

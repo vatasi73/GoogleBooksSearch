@@ -8,7 +8,7 @@ import { useBooks } from "../books/use-books";
 export const useDropDownSelect = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedOption, setSelectedOption] = useState("");
-  const [_, startFetch] = useBooks();
+  const [, startFetch] = useBooks();
   const dispatch = useAppDispatch();
   const category = useSelector(selectCategory);
   const sort = useSelector(selectSort);

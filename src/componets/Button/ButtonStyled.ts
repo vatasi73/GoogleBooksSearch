@@ -1,7 +1,6 @@
 import { styled, Button } from "@mui/material";
 
 export const SearchButton = styled(Button)({
-  maxWidth: "200px",
   textTransform: "none",
   fontWeight: 400,
   fontSize: "14px",

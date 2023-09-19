@@ -27,7 +27,7 @@ const DropDownSelect = (props: DropDownSelectProps) => {
     setSelectedOption,
   } = useDropDownSelect();
 
-  const options = props.props === "category" ? categories : sorting;
+  const options = props.props === "Category" ? categories : sorting;
 
   return (
     <>
@@ -38,7 +38,7 @@ const DropDownSelect = (props: DropDownSelectProps) => {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        {props.props === "category" ? "category" : "sorting"}
+        {props.props === "Category" ? "Category" : "Sorting"}
         {selectedOption && `: ${selectedOption}`}
       </SelectButton>
       <Menu
@@ -58,13 +58,14 @@ const DropDownSelect = (props: DropDownSelectProps) => {
           <MenuItem
             key={index}
             onClick={() => {
-              if (props.props === "sorting") {
+              if (props.props === "Sorting") {
                 handleSortSelect(item);
               }
-              if (props.props === "category") {
+              if (props.props === "Category") {
                 handleCategorySelect(item);
               }
               setSelectedOption(item);
+              handleClose();
             }}
           >
             {item}

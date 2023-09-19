@@ -42,7 +42,10 @@ const BookCard: React.FC<Props> = ({
           <Link to={`/details/${id}`} style={linkStyles}>
             <CardMedia
               component="img"
-              image={smallThumbnail || ""}
+              image={
+                smallThumbnail ||
+                "https://helpmylove.ru/wp-content/uploads/2023/05/sa3-2.jpg"
+              }
               title={title}
               sx={{
                 height: 180,

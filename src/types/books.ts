@@ -32,5 +32,6 @@ export type BooksResponse = {
   volumeInfo: VolumeInfo;
 };
 export type Items = {
-  items: BooksResponse;
+  items: BooksResponse[];
+  totalItems: number;
 };

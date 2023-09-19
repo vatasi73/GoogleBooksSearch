@@ -6,22 +6,18 @@ import { setSearch } from "./search-slice";
 import { useBooks } from "../books/use-books";
 import { useSelector } from "react-redux";
 import { selectSearch } from "./searchSelector";
-import { setClearLoadMore } from "../loadMore/loadMore-slice";
+import { setClearLoadMore, setIsFirstLoad } from "../loadMore/loadMore-slice";
 
 type OnSearch = ChangeEventHandler<HTMLInputElement>;
 
-export const useSearch = (): [
-  string,
-  OnSearch,
-  () => void,
-  (targetKey: string) => boolean
-] => {
-  const [_, startFetch] = useBooks();
+export const useSearch = (): [string, OnSearch, () => void, () => void] => {
+  const [, startFetch] = useBooks();
   const dispatch = useAppDispatch();
   const search = useSelector(selectSearch);
   const handleClickSearch = () => {
     startFetch();
     dispatch(setClearLoadMore());
+    dispatch(setIsFirstLoad(false));
   };
 
   const handleSearch: OnSearch = (e) => {
@@ -51,6 +47,7 @@ export const useSearch = (): [
         window.removeEventListener("keydown", downHandler);
         window.removeEventListener("keyup", upHandler);
       };
+      // eslint-disable-next-line
     }, []);
 
     return keyPressed;

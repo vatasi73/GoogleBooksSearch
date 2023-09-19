@@ -29,8 +29,8 @@ const HomePage = () => {
           justifyContent: "space-between",
         }}
       >
-        <DropDownSelect props="category" />
-        <DropDownSelect props="sorting" />
+        <DropDownSelect props="Category" />
+        <DropDownSelect props="Sorting" />
       </Box>
       <Box
         sx={{
